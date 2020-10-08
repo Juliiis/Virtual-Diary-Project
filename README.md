@@ -30,7 +30,7 @@ Open 3 terminals. The first for FRONTEND, the second for BACKEND the third for M
 
   # Backend
 
-- Start with backend and mysql (the same).
+- Start with backend and mysql.
   
 [] Use Postman to confirm that you have completed these correctly. You can test your API in `http://localhost:5000/api`
 

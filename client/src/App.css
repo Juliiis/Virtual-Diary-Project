@@ -1,23 +1,12 @@
-.App {
+/* #App {
   text-align: center;
-  text-shadow: #74EBD5 0.1em 0.1em 0.1em;
-  color: #A569BD;
   scroll-padding-block: 100px;
-  position:absolute; 
-  height:100%; 
-  width:100%;
-  background-color: #F0F3F4;
-  border-style: double;
-  border-color: #A569BD;
-  ;
-  border-spacing: 50px;
+  background-color: #ffffff;
 }
 
-input[type=text] {
-  background-color: #74EBD5;
-  background-image: linear-gradient(90deg, #74EBD5 2%, #9FACE6 90%);
+.title{
+  text-shadow: #74EBD5 0.1em 0.1em 0.1em;
   color: #A569BD;
-  border: #8ae9d7;
-}
+} */
 
 

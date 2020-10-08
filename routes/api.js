@@ -16,19 +16,19 @@ router.get("/", function(req, res, next) {
 
 /* POST a new diaries. */
 router.post("/", (req, res) => {
-    db(`insert into information (date, text) values (STR_TO_DATE("${req.body.date}", '%d/%m/%Y'), "${req.body.text}");`)
+  db(
+    `insert into information (date, text) values ("${req.body.date}","${req.body.text}");`
+  )
     .then(() => {
-        db("SELECT * FROM information;").then(result => res.send(result.data));
-      })
-    .catch(err => res.status(500).send(err));
-  });
-
+      db("SELECT * FROM information;").then((result) => res.send(result.data));
+    })
+    .catch((err) => res.status(500).send(err));
+});
 
 /* DELETE one diaries page. */
 router.delete("/:id", (req, res) => {
     const { id } = req.params;
-    if (id) {
-      
+    if (id) { 
       db(`delete from information where id = "${id}";`)
         .then(() => {
       db("SELECT * FROM information;")

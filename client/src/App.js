@@ -9,6 +9,7 @@ class App extends React.Component {
       showError: false,
       text: "",
       date: "",
+      value:"",
       information: []
     };
   }
@@ -43,6 +44,7 @@ class App extends React.Component {
     });
   }
 
+  
   addDay(){
     
     if(this.state.text === "" || this.state.text === undefined || this.state.date === "" || this.state.date === undefined) {
@@ -55,15 +57,17 @@ class App extends React.Component {
         method: "POST",
         headers: {"Content-Type": "application/json" }, 
         body: JSON.stringify({ text: this.state.text, date: this.state.date })
-      }) .then(response => {
+      }) .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         } else {
           return response.json();
         }
       })
-      .then(myJSON => {
-        this.setState({information: myJSON});
+      .then(response => {
+        this.setState({
+          information: response.map(each => { each.date = new Date(each.date).toDateString(); return each })
+        });
          this.setState({
             date: "",
             text: ""
@@ -72,8 +76,10 @@ class App extends React.Component {
     }
   };
 
+  
   viewText(value) {
     this.setState({text: value})
+    
   }
 
   deleteDate(id){
@@ -90,8 +96,10 @@ class App extends React.Component {
         return response.json();
       }
     })
-    .then(myJSON => {
-      this.setState({information: myJSON});
+    .then(response => {
+      this.setState({
+        information: response.map(each => { each.date = new Date(each.date).toDateString(); return each })
+      });
       this.setState({
         date: "",
         text: ""
@@ -104,32 +112,32 @@ class App extends React.Component {
  render () {
    const { text, date, information } = this.state;
   return (
-    <div className="App">
-
-        <h2>MY VIRTUAL DIARY PROJECT</h2>
-       
-        <div>{text}</div> <br></br><br></br>
+    <div className="container">
+        <h2>MY VIRTUAL DIARY</h2>
+          {/* <div>{text}</div>  */}
+          <textarea
+              type="text"
+              value={text}
+              onChange={this.handleInput}
+              placeholder="How was your day?.."
+              maxLength="500"
+              className="col-sm-4"
+            ></textarea>
        <div>
-        <input 
-        type="text" 
-        value={text} 
-        onChange={this.handleInput} 
-        placeholder="How was your day?.."
-        maxLength="500"
-        /> <br></br><br></br>
     
         <div style={{ fontSize: 10, color: "red"}}>
           {this.state.textError}          
         </div>
 
         <input 
-        type="text" 
+        type="date" 
         value={date} 
         onChange={this.dateAgost} 
         placeholder="00/00/0000" 
         /> <br></br><br></br>
         
         {this.state.showError ? (<div className="text-danger"><i>All inputs are required</i></div>) : (<div></div>)}<br></br>
+        
         <button onClick={e => this.addDay()} className="btn btn-outline-secondary btn-sm "><b>SAVE IN DATABASE</b></button><br></br>
         
        </div>
@@ -141,7 +149,7 @@ class App extends React.Component {
                   <button onClick={() => this.viewText(each.text)} className="btn btn-outline-secondary btn-sm float-left ">
                     {each.date}
                   </button>
-                  <button onClick={() => this.deleteDate(each.id)} className="btn">delete
+                  <button onClick={() => this.deleteDate(each.id)} className="btn"><i class="far fa-trash-alt"></i>
                   </button>
                 </div>
               );
