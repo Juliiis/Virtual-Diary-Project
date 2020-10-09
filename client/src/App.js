@@ -14,7 +14,7 @@ class App extends React.Component {
     };
   }
 
-  //show my list in the div in the top 
+  
   componentDidMount() {
     this.getInformation();
   }
@@ -78,7 +78,9 @@ class App extends React.Component {
 
   
   viewText(value) {
-    this.setState({text: value})
+    this.setState({
+      text: value
+    })
     
   }
 
@@ -146,9 +148,9 @@ class App extends React.Component {
             {information.map(each => {
               return (
                 <div key={each.id} >
-                  <button onClick={() => this.viewText(each.text)} className="btn btn-outline-secondary btn-sm float-left ">
+                  <div><button onClick={() => this.viewText(each.text)} className="btn btn-outline-secondary btn-sm float-left ">
                     {each.date}
-                  </button>
+                  </button></div>
                   <button onClick={() => this.deleteDate(each.id)} className="btn"><i class="far fa-trash-alt"></i>
                   </button>
                 </div>
