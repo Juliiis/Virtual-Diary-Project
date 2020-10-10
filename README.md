@@ -12,7 +12,7 @@ In this repository, you will create a virtual diary.
 
 This is a mockup of the frontend.
 
-![virtual diary](my_virtual_diary.png)
+![virtual diary](myvirtualdiary.png)
 
 ## Setup
 
