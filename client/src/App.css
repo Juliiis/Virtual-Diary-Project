@@ -1,3 +1,16 @@
+#textcontainer{
+    color: black;
+    background-color: plum;
+    width: 75% !important;
+    height: 40rem !important;
+    /* text-align: center; */
+    font-family: "Times New Roman", Times, serif;
+    font-size: x-large;
+    opacity: 0.5;
+}
 
+/* #infocontainer{
+    text-align: center;
+} */
 
 

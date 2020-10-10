@@ -114,53 +114,61 @@ class App extends React.Component {
  render () {
    const { text, date, information } = this.state;
   return (
-    <div className="container">
+    <div className="container-fluid p-4 m-3">
       <div className="row">
-        <div className="col-3">
-          <h2>MY VIRTUAL DIARY</h2>
-        </div>
-              {/* <div>{text}</div>  */}
-        <div className="col-6">
-          <textarea
+
+        <div className="col" id="textcontainer">
+          <div className="container mt-4">{text}</div>
+        </div> 
+
+        <div className="col text-center d-flex justify-content-center align-items-center" id="container">
+          <div className="container text-center">
+            <h2 className="mb-2">MY VIRTUAL DIARY</h2> 
+            <textarea
               type="text"
               value={text}
               onChange={this.handleInput}
               placeholder="How was your day?.."
               maxLength="500"
+              className="form-control mb-4"
             ></textarea>
-       
-    
-          <div style={{ fontSize: 10, color: "red"}}>
-            {this.state.textError}          
-          </div>
-
-          <input 
-          type="date" 
-          value={date} 
-          onChange={this.dateAgost} 
-          placeholder="00/00/0000" 
-          /> 
-        
-          {this.state.showError ? (<div className="text-danger"><i>All inputs are required</i></div>) : (<div></div>)}
-        
-          <button onClick={e => this.addDay()} className="btn btn-outline-secondary btn-sm "><b>SAVE IN DATABASE</b></button>
-        </div>
-     
-          <div className="col-3">
-            {information.map(each => {
-              return (
-                <div key={each.id} >
-                  <div><button onClick={() => this.viewText(each.text)} className="btn btn-outline-secondary btn-sm">
-                    {each.date}
-                  </button></div>
-                  <button onClick={() => this.deleteDate(each.id)} className="btn"><i class="far fa-trash-alt"></i>
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+            <div className="text-danger mb-2">
+              {this.state.textError}          
+            </div>
+            <input 
+              type="date" 
+              value={date} 
+              onChange={this.dateAgost} 
+              placeholder="00/00/0000" 
+              className="mb-2"
+            /> 
+          
+              {this.state.showError ? (<div className="text-danger"><i>All inputs are required</i></div>) : (<div></div>)}
+          
+            <button onClick={e => this.addDay()} className="btn btn-outline-secondary btn-sm mb-2"><b>SAVE IN DATABASE</b></button>
+            </div>
+            </div>
+            <div className="row">
+              {information.map(each => {
+                return (
+                  <div key={each.id} >
+                    <div>
+                      <button onClick={() => this.viewText(each.text)} className="btn btn-outline-secondary btn-sm mb-2">
+                      {each.date}
+                      </button>
+                  
+                      <button onClick={() => this.deleteDate(each.id)} className="btn mb-2"><i class="far fa-trash-alt"></i>
+                      </button>
+                      </div>
+                  </div>
+                    );
+                    })} 
+            </div>
+          
+          
       </div>
+    </div>
+    
        
 
   );
