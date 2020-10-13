@@ -1,16 +1,31 @@
-#textcontainer{
+#textcontainer {
     color: black;
     background-color: plum;
     width: 75% !important;
     height: 40rem !important;
-    /* text-align: center; */
     font-family: "Times New Roman", Times, serif;
     font-size: x-large;
     opacity: 0.5;
+    box-shadow: 5px 5px 15px grey;
+    border-radius: 8px;
 }
 
-/* #infocontainer{
-    text-align: center;
-} */
+#h2 {
+    color: #8EC5FC;
+    text-shadow: 1px 1px plum;
+    box-shadow: 1px 1px 5px grey;
+    background-image: url("https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif");
+} 
 
+#buttonsave{
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 50%, #ffffff 100%);
+}
+
+#placeholder {
+    text-align: center;
+    padding-top: 60px;
+    box-shadow: 2px 2px 5px rgb(199, 197, 197);
+    border-radius: 8px;
+  }
 

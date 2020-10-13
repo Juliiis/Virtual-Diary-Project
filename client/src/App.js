@@ -117,22 +117,25 @@ class App extends React.Component {
     <div className="container-fluid p-4 m-3">
       <div className="row">
 
-        <div className="col" id="textcontainer">
+        <div className="col mt-1 mr-4" id="textcontainer">
           <div className="container mt-4">{text}</div>
         </div> 
 
         <div className="col text-center d-flex justify-content-center align-items-center" id="container">
           <div className="container text-center">
-            <h2 className="mb-2">MY VIRTUAL DIARY</h2> 
+            <h2 className="mb-2" id="h2">MY VIRTUAL DIARY</h2> 
             <textarea
               type="text"
               value={text}
               onChange={this.handleInput}
               placeholder="How was your day?.."
               maxLength="500"
-              className="form-control mb-4"
+              className="form-control mt-4"
+              cols="40" 
+              rows="5"
+              id="placeholder"
             ></textarea>
-            <div className="text-danger mb-2">
+            <div className="text-danger mb-4">
               {this.state.textError}          
             </div>
             <input 
@@ -140,29 +143,34 @@ class App extends React.Component {
               value={date} 
               onChange={this.dateAgost} 
               placeholder="00/00/0000" 
-              className="mb-2"
+              className="mb-4"
             /> 
           
-              {this.state.showError ? (<div className="text-danger"><i>All inputs are required</i></div>) : (<div></div>)}
+              {this.state.showError ? (<div className="text-danger mb-4"><i>All inputs are required</i></div>) : (<div></div>)}
           
-            <button onClick={e => this.addDay()} className="btn btn-outline-secondary btn-sm mb-2"><b>SAVE IN DATABASE</b></button>
+            <button onClick={e => this.addDay()} className="btn btn-outline-secondary btn-sm mb-2" id="buttonsave"><b>SAVE IN DATABASE</b></button>
             </div>
             </div>
+           
             <div className="row">
-              {information.map(each => {
-                return (
-                  <div key={each.id} >
-                    <div>
-                      <button onClick={() => this.viewText(each.text)} className="btn btn-outline-secondary btn-sm mb-2">
-                      {each.date}
-                      </button>
+              <footer id="footer">
+                <div className="container mt-4 pt-4">
+                  {information.map(each => {
+                    return (
+                      <div key={each.id} >
+                        <div>
+                          <button onClick={() => this.viewText(each.text)} className="btn btn-outline-secondary btn-sm mb-2 ml-4">
+                          {each.date}
+                          </button>
                   
-                      <button onClick={() => this.deleteDate(each.id)} className="btn mb-2"><i class="far fa-trash-alt"></i>
-                      </button>
+                          <button onClick={() => this.deleteDate(each.id)} className="btn mb-2"><i class="far fa-trash-alt"></i>
+                          </button>
+                        </div>
                       </div>
-                  </div>
-                    );
-                    })} 
+                        );
+                      })} 
+                </div>
+              </footer>
             </div>
           
           
