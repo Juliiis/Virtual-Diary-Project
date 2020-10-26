@@ -117,7 +117,7 @@ class App extends React.Component {
     <div className="container-fluid p-4 m-3">
       <div className="row">
 
-        <div className="col mt-1 mr-4" id="textcontainer">
+        <div className="col mt-1 mr-4 ml-4" id="textcontainer">
           <div className="container mt-4">{text}</div>
         </div> 
 
